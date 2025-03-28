@@ -11,7 +11,7 @@ If you’re a developer, tester, or security enthusiast, knowing how to identify
 
 ## 🕵️‍♂️ How to Test for IDOR - Real-World Scenarios
 
-### User Profile Access Test
+### 1. User Profile Access Test
 Scenario: Can you view another user’s profile by modifying the user_id in the URL?
 
 #### Conversation: 👩‍💻 
@@ -27,7 +27,7 @@ Dev: Can you please show it
 ##### 🔹Secure Behavior: 
       The server should return 403 Forbidden or redirect you to your own profile.  
 
-### API Endpoint IDOR Test
+### 2. API Endpoint IDOR Test
 Scenario: Can you access someone else's data by modifying API parameters?
 
 #### Conversation: 👩‍💻 
@@ -45,7 +45,7 @@ Security Engineer: If I change the user ID in an API request, I can see another 
 ##### 🔹 Secure Behavior: 
        The server should check if the authenticated user owns the requested data.
 
-### File Download IDOR Test
+### 3. File Download IDOR Test
 
 Scenario: Can you download someone else’s private file by changing the file name in the request?
 
@@ -61,7 +61,7 @@ Scenario: Can you download someone else’s private file by changing the file na
 ##### 🔹Secure Behavior: 
       The system should verify who owns the file before allowing downloads.
 
-### Password Reset IDOR Test
+### 4. Password Reset IDOR Test
 Scenario: Can you reset another user's password by modifying the email or user ID in a password reset request?  
 
 #### Conversation:👨‍💻  
@@ -77,7 +77,7 @@ Dev: Let’s dig into the logs and fix it.
       The reset request should only work for the authenticated user and require additional   
       verification (e.g., 2FA).
 
-### E-commerce Order Modification Test
+### 5. E-commerce Order Modification Test
   Scenario: Can you modify another customer’s order details?
 
 #### Conversation:👨‍💻 
@@ -93,7 +93,7 @@ Security Team:Sounds suspicious. Let’s check the request logs.
 ##### 🔹 Secure Behavior: 
  The backend should validate ownership of the order before making changes.
 
-### Banking Portal Transaction Test
+### 6. Banking Portal Transaction Test
 Scenario: Can you view another user’s bank transactions?
 
 #### Conversation: 👩‍💻
