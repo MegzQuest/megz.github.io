@@ -1,4 +1,4 @@
- # IDOR Vulnerability Testing - A Hands-On Guide🔍
+
 
 Imagine you're using a web app and notice that changing a URL parameter gives you access to another user's data. Sounds scary, right? This is Insecure Direct Object Reference (IDOR)—a vulnerability that can expose sensitive user information if not handled properly.
 In this interactive guide, we'll explore IDOR vulnerabilities, how to test for them, and most importantly, how to prevent them. Ready? Let’s dive in! 
