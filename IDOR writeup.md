@@ -4,12 +4,12 @@ Imagine you're using a web app and notice that changing a URL parameter gives yo
 In this interactive guide, we'll explore IDOR vulnerabilities, how to test for them, and most importantly, how to prevent them. Ready? Let’s dive in! 
 
 ## 🎯 Why Should You Care About IDOR?
-IDOR vulnerabilities can have serious consequences like:
-	• Unauthorized access to personal data 
-	• Account takeovers and password resets 
-	• Unauthorized modifications (e.g., changing someone’s order details) 
-	• Leaking sensitive business or financial data 
-If you’re a developer, tester, or security enthusiast, knowing how to identify and mitigate IDOR is a must-have skill! 
+IDOR vulnerabilities can have serious consequences like:  
+	• Unauthorized access to personal data   
+	• Account takeovers and password resets   
+	• Unauthorized modifications (e.g., changing someone’s order details)   
+	• Leaking sensitive business or financial data   
+If you’re a developer, tester, or security enthusiast, knowing how to identify and mitigate IDOR is a must-have skill!   
 
 ## 🕵️‍♂️ How to Test for IDOR - Real-World Scenarios
 
@@ -17,8 +17,8 @@ If you’re a developer, tester, or security enthusiast, knowing how to identify
 Scenario: Can you view another user’s profile by modifying the user_id in the URL?
 
 #### Conversation: 👩‍💻 
-Security Analyst: “Hey, I noticed something weird in our app. When I change my user ID in the URL, I can see another user’s profile.That sounds like an IDOR vulnerability!  
-Dev:"Can you please show it"  
+Security Analyst: Hey, I noticed something weird in our app. When I change my user ID in the URL, I can see another user’s profile.That sounds like an IDOR vulnerability!    
+Dev: Can you please show it   
 
 ##### 🔹 Steps to Test:
 	1. Log in as User A and navigate to their profile: https://example.com/user/1234  
@@ -33,9 +33,9 @@ Dev:"Can you please show it"
 Scenario: Can you access someone else's data by modifying API parameters?
 
 #### Conversation: 👩‍💻 
-Security Engineer: “I was checking the API, and I think I found something suspicious.”  
-QA Tester: “What did you find?”  
-Security Engineer: “If I change the user ID in an API request, I can see another person’s order history!”  
+Security Engineer:I was checking the API, and I think I found something suspicious.   
+QA Tester:What did you find?  
+Security Engineer: If I change the user ID in an API request, I can see another person’s order history!   
 
 ##### 🔹 Steps to Test:
 	1. Capture an API request like:  
@@ -52,8 +52,8 @@ Security Engineer: “If I change the user ID in an API request, I can see anoth
 Scenario: Can you download someone else’s private file by changing the file name in the request?
 
 #### Conversation:👩‍💻 
- Security Analyst: “I just tested our file download function, and guess what? If I change the   filename in the request, I can access files that aren’t mine.”  
- Dev: “ Do we need to check permissions on file access.”  
+ Security Analyst: I just tested our file download function, and guess what? If I change the   filename in the request, I can access files that aren’t mine.    
+ Dev: Do we need to check permissions on file access.   
 ##### 🔹 Steps to Test:
 	1. Identify a file download request:  
    	   GET /download?file=report123.pdf  
@@ -67,13 +67,13 @@ Scenario: Can you download someone else’s private file by changing the file na
 Scenario: Can you reset another user's password by modifying the email or user ID in a password reset request?  
 
 #### Conversation:👨‍💻  
-Security Engineer: “I requested a password reset, but I got a link for another user’s account!”  
-Dev:  "Let’s dig into the logs and fix it.”  
+Security Engineer: I requested a password reset, but I got a link for another user’s account!    
+Dev: Let’s dig into the logs and fix it.    
 ##### 🔹 Steps to Test:
 	1. Request a password reset link and capture the request:  
            { "email": "userA@example.com" }    
 	2. Modify userA@example.com to userB@example.com.  
-	3.  If the reset link is sent to your email instead of User B’s, IDOR is present!  
+	3. If the reset link is sent to your email instead of User B’s, IDOR is present!  
 
 ##### 🔹Secure Behavior: 
       The reset request should only work for the authenticated user and require additional   
@@ -83,12 +83,12 @@ Dev:  "Let’s dig into the logs and fix it.”
   Scenario: Can you modify another customer’s order details?
 
 #### Conversation:👨‍💻 
-Customer Service: “A customer just called saying their order status changed to ‘Cancelled’ without them doing anything.”
-Security Team: “Sounds suspicious. Let’s check the request logs.”
+Customer Service:A customer just called saying their order status changed to ‘Cancelled’ without them doing anything.”
+Security Team:Sounds suspicious. Let’s check the request logs.  
 ##### 🔹 Steps to Test:
 	1. Place an order and capture the request:
            POST /api/orders/submit  
-           { "order_id": "9876", "user_id": "1234" }  
+           {"order_id": "9876", "user_id": "1234"}  
 	2. Modify user_id or order_id to another customer’s details.  
 	3. If the system allows the change, IDOR is present!  
 
@@ -99,8 +99,8 @@ Security Team: “Sounds suspicious. Let’s check the request logs.”
 Scenario: Can you view another user’s bank transactions?
 
 #### Conversation: 👩‍💻
-Ethical Hacker: “I noticed that if I change the transaction ID in the URL, I can see someone else’s payment details.”  
-Bank Security Team: “That’s a major breach! We need to enforce strict access control.”  
+Ethical Hacker:I noticed that if I change the transaction ID in the URL, I can see someone else’s payment details.    
+Bank Security Team:That’s a major breach! We need to enforce strict access control.    
 ##### 🔹 Steps to Test:
 	1. Navigate to your transactions page:
            GET /bank/transactions/1234  
