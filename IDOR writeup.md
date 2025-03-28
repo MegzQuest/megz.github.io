@@ -1,23 +1,22 @@
- IDOR Vulnerability Testing - A Hands-On Guide🔍
+ # IDOR Vulnerability Testing - A Hands-On Guide🔍
 
 Imagine you're using a web app and notice that changing a URL parameter gives you access to another user's data. Sounds scary, right? This is Insecure Direct Object Reference (IDOR)—a vulnerability that can expose sensitive user information if not handled properly.
 In this interactive guide, we'll explore IDOR vulnerabilities, how to test for them, and most importantly, how to prevent them. Ready? Let’s dive in! 
 
-🎯 Why Should You Care About IDOR?
+## 🎯 Why Should You Care About IDOR?
 IDOR vulnerabilities can have serious consequences like:
-
 	• Unauthorized access to personal data 
 	• Account takeovers and password resets 
 	• Unauthorized modifications (e.g., changing someone’s order details) 
 	• Leaking sensitive business or financial data 
 If you’re a developer, tester, or security enthusiast, knowing how to identify and mitigate IDOR is a must-have skill! 
 
-🕵️‍♂️ How to Test for IDOR - Real-World Scenarios
+## 🕵️‍♂️ How to Test for IDOR - Real-World Scenarios
 
-User Profile Access Test
+### User Profile Access Test
 Scenario: Can you view another user’s profile by modifying the user_id in the URL?
 
-Conversation: 👩‍💻 
+#### Conversation: 👩‍💻 
 Security Analyst: “Hey, I noticed something weird in our app. When I change my user ID in the URL, I can see another user’s profile.That sounds like an IDOR vulnerability! 
 Dev:"Can you please show it"
 
@@ -30,10 +29,10 @@ Dev:"Can you please show it"
 🔹Secure Behavior: 
       The server should return 403 Forbidden or redirect you to your own profile.
 
-API Endpoint IDOR Test
+### API Endpoint IDOR Test
 Scenario: Can you access someone else's data by modifying API parameters?
 
-Conversation: 👩‍💻 
+#### Conversation: 👩‍💻 
 Security Engineer: “I was checking the API, and I think I found something suspicious.”
 QA Tester: “What did you find?”
 Security Engineer: “If I change the user ID in an API request, I can see another person’s order history!”
@@ -48,11 +47,11 @@ Security Engineer: “If I change the user ID in an API request, I can see anoth
 🔹 Secure Behavior: 
        The server should check if the authenticated user owns the requested data.
 
-File Download IDOR Test
+### File Download IDOR Test
 
 Scenario: Can you download someone else’s private file by changing the file name in the request?
 
-Conversation:👩‍💻 
+#### Conversation:👩‍💻 
  Security Analyst: “I just tested our file download function, and guess what? If I change the   filename in the request, I can access files that aren’t mine.”
  Dev: “ Do we need to check permissions on file access.”
 🔹 Steps to Test:
@@ -64,10 +63,10 @@ Conversation:👩‍💻
 🔹Secure Behavior: 
       The system should verify who owns the file before allowing downloads.
 
-Password Reset IDOR Test
+### Password Reset IDOR Test
 Scenario: Can you reset another user's password by modifying the email or user ID in a password reset request?
 
-Conversation:👨‍💻  
+#### Conversation:👨‍💻  
 Security Engineer: “I requested a password reset, but I got a link for another user’s account!”
 Dev:  "Let’s dig into the logs and fix it.”
 🔹 Steps to Test:
@@ -80,10 +79,10 @@ Dev:  "Let’s dig into the logs and fix it.”
       The reset request should only work for the authenticated user and require additional   
       verification (e.g., 2FA).
 
- E-commerce Order Modification Test
+### E-commerce Order Modification Test
   Scenario: Can you modify another customer’s order details?
 
-Conversation:👨‍💻 
+#### Conversation:👨‍💻 
 Customer Service: “A customer just called saying their order status changed to ‘Cancelled’ without them doing anything.”
 Security Team: “Sounds suspicious. Let’s check the request logs.”
 🔹 Steps to Test:
@@ -96,10 +95,10 @@ Security Team: “Sounds suspicious. Let’s check the request logs.”
 🔹 Secure Behavior: 
  The backend should validate ownership of the order before making changes.
 
-Banking Portal Transaction Test
+### Banking Portal Transaction Test
 Scenario: Can you view another user’s bank transactions?
 
-Conversation: 👩‍💻
+#### Conversation: 👩‍💻
 Ethical Hacker: “I noticed that if I change the transaction ID in the URL, I can see someone else’s payment details.”
 Bank Security Team: “That’s a major breach! We need to enforce strict access control.”
 🔹 Steps to Test:
@@ -112,7 +111,7 @@ Bank Security Team: “That’s a major breach! We need to enforce strict access
      The system should enforce strict user authentication and session validation.
 
 
-🛡️ How to Prevent IDOR
+## 🛡️ How to Prevent IDOR
 
  1. Implement Proper Authorization Checks Every request should validate who is making the request before granting access.
  2. Use Secure Identifiers Instead of using sequential IDs (user_id=1234), use GUIDs or hashed identifiers.
